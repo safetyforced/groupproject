@@ -1,4 +1,5 @@
 package teamJAC;
+
 import java.util.*;
 
 public class validator { // Bill's Validator class blatantly stolen for my
@@ -47,7 +48,7 @@ public class validator { // Bill's Validator class blatantly stolen for my
 	public static String getValidString(String inputs, int length) {
 		String i = readValidString(length);
 		while (!(i.matches(inputs))) {
-			System.out.print("Please only input the country name with letters: ");
+			System.out.print("Please only input the name with letters: ");
 			i = readValidString(length);
 		}
 		return i;
