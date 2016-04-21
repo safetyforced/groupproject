@@ -6,12 +6,22 @@ public class CustomerHandler {
 	private String email;
 	private int points;
 
-	public void incrementPoints() {
+	public void incrementPoints(CustomerHandler customer) {
+		points = customer.getPoints();
 		points++;
+		customer.setPoints(points);
 		}
 	
-	public void getFreeDrink () {
+	public void getFreeDrink (CustomerHandler customer) {
+		points = customer.getPoints();
+		if (points > 10) {
 		points -= 10;
+		customer.setPoints(points);
+		} else {
+			int need = 10 - points;
+			System.out.println("You don't have enough points, you need " + need + " more drinks to redeem.");
+		}
+		
 	}
 
 	public int getPoints() {
