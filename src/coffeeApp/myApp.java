@@ -14,13 +14,14 @@ public static void main(String[] args) {
 	System.out.println("Welcome to JAC'S Java!");
 	System.out.println();
 	
-	while (true)
-	{
+
 	System.out.print("Please enter your name:");
 	String userName = Scan1.nextLine();
+	System.out.println("Hello " + userName + "! You have" + " points!");
 	
 	String [ ] menu = {"", "add points", "redeem your points", "exit the app"};
-	
+	while (true)
+	{
 	System.out.println();
 	System.out.println("Menu:\n1) Add Points \n2) Redeem Points \n3) Exit App\nWhat would you like to do?");
 	int userInput = getValidNumberInRange(1,menu.length-1);
