@@ -8,39 +8,25 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class fileIOHandler {
 
-public static void addCustomer() {	
-	String name = "";
-	String email = "";
-	
-	Path companyPath = Paths.get("CustomerInformation.txt");
-	File customerFile = companyPath.toFile();
-	System.out.print("Enter the person's name: ");
+	static String[] customerInfo = new String[3];
+	static String name = "";
+	static String email = "";
+	static int points = 0;
 
-	try {
-		name = validator.getValidString("[a-z A-Z]+", 300);
-	} catch (Exception e) {
-		// catches all exceptions and prints
+public static void saveData(ArrayList<CustomerHandler> customers) {
 
-		e.printStackTrace();
-	}
-	
-	System.out.print("Enter the person's e-mail address: ");
-	
-	try {
-		email = validator.getValidString("\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}\\b", 300);
-	} catch (Exception e) {
-		// catches all exceptions and prints
-
-		e.printStackTrace();
-	}
+	Path customerPath = Paths.get("CustomerInformation.txt");
+	File customerFile = customerPath.toFile();
 
 	try {
 		FileReader read = new FileReader(customerFile);
 		BufferedReader in = new BufferedReader(read);
 		String line = in.readLine();
+		
 		FileWriter out = new FileWriter(customerFile);
 		while (line != null) {
 			if (!line.equals("")) {
@@ -49,12 +35,19 @@ public static void addCustomer() {
 			} else {
 				break;
 			}
-		}
-		out.append(name + "," + email + "," + 0);
+			
+			for (int i = 0; i < customers.size(); i++) {
+		CustomerHandler customer = customers.get(i);
+		customerInfo[0] = customer.getName();
+		customerInfo[1] = customer.getEmail();
+		customerInfo[2] = Integer.toString(customer.getPoints());
+		
+		out.append(customerInfo[0] + "," + customerInfo[1] + "," + customerInfo[2]);
+			}
 		out.close();
 		in.close();
-
-	} catch (FileNotFoundException e) {
+		}
+		} catch (FileNotFoundException e) {
 		// catches file not found exception and prints
 
 		e.printStackTrace();
@@ -63,9 +56,37 @@ public static void addCustomer() {
 
 		e.printStackTrace();
 	}
-
-
-	
-	
-}	
 }
+
+
+public static ArrayList<CustomerHandler> readData() {
+	int points = 0;
+	String[] lineItem = new String[3];
+	ArrayList<CustomerHandler> customers = new ArrayList<CustomerHandler>();
+
+	Path countriesPath = Paths.get("CustomerInformation.txt");
+	File countriesFile = countriesPath.toFile();
+
+	try {
+		FileReader r = new FileReader(countriesFile);
+		BufferedReader in = new BufferedReader(r);
+		String line = in.readLine();
+
+		while (line != null) {
+			if (!line.equals(""))
+				lineItem = line.split(",");
+			points = Integer.parseInt(lineItem[2]);
+			CustomerHandler customer = new CustomerHandler(lineItem[0], lineItem[1], points);
+			customers.add(customer);
+			line = in.readLine();
+		}
+		in.close();
+	}
+
+	catch (Exception e) {
+		e.printStackTrace();
+	}
+	return customers;
+}
+}
+
