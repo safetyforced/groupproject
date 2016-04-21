@@ -11,7 +11,7 @@ public class myApp {
 public static void main(String[] args) {
 	
 
-    //list=fileIOHandler.readData();
+    list=fileIOHandler.readData();
 	
 	
 	System.out.println("Welcome to JAC'S Java!");
@@ -55,14 +55,14 @@ public static void main(String[] args) {
 }
 	
 
-public static CustomerHandler searchCustomer(String name){
-	
+public static int searchCustomer(String name){
+	int x = 0;
 	for (int i = 0; i < list.size(); i++) {
 		if (list.get(i).getName().equalsIgnoreCase(name)){
-			return list.get(i);
+			 x= list.get(i).getPoints();
 		}
 	}
-	return null;
+	return x;
 	
 	
 	
