@@ -14,6 +14,8 @@ public static void main(String[] args) {
 	System.out.println("Welcome to JAC'S Java!");
 	System.out.println();
 	
+	while (true)
+	{
 	System.out.print("Please enter your name:");
 	String userName = Scan1.nextLine();
 	
@@ -25,15 +27,17 @@ public static void main(String[] args) {
 	System.out.println();
 
 	System.out.println("You chose to " + menu[userInput] + ".");
+	
 	System.out.println();
 
+	if (userInput==3) 
+	{ System.out.println("Have a great Day!");
+		break;
+	}
+
+	}
 	
 	
-	
-	if (userInput == 3) 
-		{
-			System.out.println("Have a great day!");	
-		}
 }
 	public static int readValidIntegerNoExp()
 	{ while (!Scan1.hasNextInt()) {
@@ -56,17 +60,17 @@ public static void main(String[] args) {
 		return input;
 }
 	
-		public static int searchCustomer(String name){
-	
+
+public static int searchCustomer(String name){
+	int x = 0;
 	for (int i = 0; i < list.size(); i++) {
 		if (list.get(i).getName().equalsIgnoreCase(name)){
-			return i;
+			 x= list.get(i).getPoints();
 		}
 	}
+	return x;
 	
-	return -1;
 	
-		}	
-}	
 	
-
+}		
+}
