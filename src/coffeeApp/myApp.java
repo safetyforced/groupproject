@@ -52,15 +52,15 @@ public static void main(String[] args) {
 		return input;
 }
 	
-public static int searchCustomer(String name){
+public static CustomerHandler searchCustomer(String name){
 	
 	for (int i = 0; i < list.size(); i++) {
 		if (list.get(i).getName().equalsIgnoreCase(name)){
-			return i;
+			return list.get(i);
 		}
 	}
+	return null;
 	
-	return -1;
 	
 	
 }	
