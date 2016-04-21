@@ -1,11 +1,19 @@
 package coffeeApp;
 import java.util.*;
 
+import teamJAC.CustomerHandler;
+import teamJAC.fileIOHandler;
+
 public class myApp {
 	static Scanner Scan1 = new Scanner(System.in);
 	static boolean userPick = true;
-	
+	static ArrayList<CustomerHandler> list;
 public static void main(String[] args) {
+	
+
+    list=fileIOHandler.readData();
+	
+	
 	System.out.println("Welcome to JAC'S Java!");
 	System.out.println();
 	
@@ -34,6 +42,7 @@ public static void main(String[] args) {
 			
 	}//makes users enter valid number in range
 	public static int getValidNumberInRange(int min, int max) {
+
 		int input = readValidIntegerNoExp();
 		while ((input < min) || (input > max)) {
 			System.out.println("Please put a number within range!");
@@ -42,4 +51,23 @@ public static void main(String[] args) {
 		}
 		return input;
 }
+	
+public static int searchCustomer(String name){
+	
+	for (int i = 0; i < list.size(); i++) {
+		if (list.get(i).getName().equalsIgnoreCase(name)){
+			return i;
+		}
+	}
+	
+	return -1;
+	
+	
+}	
+
+
+
+	
+	
+	
 }
