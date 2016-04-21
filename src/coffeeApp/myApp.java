@@ -11,7 +11,7 @@ public class myApp {
 public static void main(String[] args) {
 	
 
-    list=fileIOHandler.readData();
+    //list=fileIOHandler.readData();
 	
 	
 	System.out.println("Welcome to JAC'S Java!");
@@ -19,7 +19,7 @@ public static void main(String[] args) {
 	
 	System.out.println("Menu:\n1) Add Points \n2) Redeem Points \n3) Exit App");
 	
-	String [ ] menu = {"", "add points", "redeem points", "exit the app"};
+	String [ ] menu = {"", "add points", "redeem your points", "exit the app"};
 
 	System.out.println();
 	System.out.println("What would you like to do?");
@@ -29,6 +29,8 @@ public static void main(String[] args) {
 	System.out.println("You chose to " + menu[userInput] + ".");
 	System.out.println();
 
+	System.out.print("Please enter your name:");
+	String userName = Scan1.nextLine();
 
 }
 	public static int readValidIntegerNoExp()
@@ -52,6 +54,7 @@ public static void main(String[] args) {
 		return input;
 }
 	
+
 public static CustomerHandler searchCustomer(String name){
 	
 	for (int i = 0; i < list.size(); i++) {
@@ -63,7 +66,7 @@ public static CustomerHandler searchCustomer(String name){
 	
 	
 	
-}	
+}
 
 
 
