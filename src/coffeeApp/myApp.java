@@ -1,0 +1,45 @@
+package coffeeApp;
+import java.util.*;
+
+public class myApp {
+	static Scanner Scan1 = new Scanner(System.in);
+	static boolean userPick = true;
+	
+public static void main(String[] args) {
+	System.out.println("Welcome to JAC'S Java!");
+	System.out.println();
+	
+	System.out.println("Menu:\n1) Add Points \n2) Redeem Points \n3) Exit App");
+	
+	String [ ] menu = {"", "add points", "redeem points", "exit the app"};
+
+	System.out.println();
+	System.out.println("What would you like to do?");
+	int userInput = getValidNumberInRange(1,menu.length-1);
+	System.out.println();
+	
+	System.out.println("You chose to " + menu[userInput] + ".");
+	System.out.println();
+
+
+}
+	public static int readValidIntegerNoExp()
+	{ while (!Scan1.hasNextInt()) {
+			Scan1.nextLine();}
+
+			int x = Scan1.nextInt();
+			Scan1.nextLine();
+
+			return x;
+			
+	}//makes users enter valid number in range
+	public static int getValidNumberInRange(int min, int max) {
+		int input = readValidIntegerNoExp();
+		while ((input < min) || (input > max)) {
+			System.out.println("Please put a number within range!");
+
+			input = readValidIntegerNoExp();
+		}
+		return input;
+}
+}
