@@ -31,5 +31,26 @@ public class CustomerHandler {
 		this.email = email;
 	}
 	
-	
+	public CustomerHandler addCustomer () {
+		try {
+			name = validator.getValidString("[a-z A-Z]+", 300);
+		} catch (Exception e) {
+			// catches all exceptions and prints
+
+			e.printStackTrace();
+		}
+		
+		System.out.print("Enter the person's e-mail address: ");
+		
+		try {
+			email = validator.getValidString("\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}\\b", 300);
+		} catch (Exception e) {
+			// catches all exceptions and prints
+
+			e.printStackTrace();
+		}
+		
+		CustomerHandler customer = new CustomerHandler(name, email, 0);
+		return customer;
+	}
 }
