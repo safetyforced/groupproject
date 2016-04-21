@@ -1,6 +1,5 @@
 package coffeeApp;
 import java.util.*;
-
 import teamJAC.CustomerHandler;
 import teamJAC.fileIOHandler;
 
@@ -9,29 +8,32 @@ public class myApp {
 	static boolean userPick = true;
 	static ArrayList<CustomerHandler> list;
 public static void main(String[] args) {
-	
 
-    //list=fileIOHandler.readData();
-	
+    list=fileIOHandler.readData();	
 	
 	System.out.println("Welcome to JAC'S Java!");
 	System.out.println();
 	
-	System.out.println("Menu:\n1) Add Points \n2) Redeem Points \n3) Exit App");
+	System.out.print("Please enter your name:");
+	String userName = Scan1.nextLine();
 	
 	String [ ] menu = {"", "add points", "redeem your points", "exit the app"};
-
+	
 	System.out.println();
-	System.out.println("What would you like to do?");
+	System.out.println("Menu:\n1) Add Points \n2) Redeem Points \n3) Exit App\nWhat would you like to do?");
 	int userInput = getValidNumberInRange(1,menu.length-1);
 	System.out.println();
-	
+
 	System.out.println("You chose to " + menu[userInput] + ".");
 	System.out.println();
 
-	System.out.print("Please enter your name:");
-	String userName = Scan1.nextLine();
-
+	
+	
+	
+	if (userInput == 3) 
+		{
+			System.out.println("Have a great day!");	
+		}
 }
 	public static int readValidIntegerNoExp()
 	{ while (!Scan1.hasNextInt()) {
@@ -54,7 +56,7 @@ public static void main(String[] args) {
 		return input;
 }
 	
-/*public static int searchCustomer(String name){
+		public static int searchCustomer(String name){
 	
 	for (int i = 0; i < list.size(); i++) {
 		if (list.get(i).getName().equalsIgnoreCase(name)){
@@ -64,12 +66,7 @@ public static void main(String[] args) {
 	
 	return -1;
 	
+		}	
+}	
 	
-}	*/
 
-
-
-	
-	
-	
-}
