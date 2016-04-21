@@ -25,16 +25,8 @@ public static void saveData(ArrayList<CustomerHandler> customers) {
 	try {
 		FileReader read = new FileReader(customerFile);
 		BufferedReader in = new BufferedReader(read);
-		String line = in.readLine();
 		
 		FileWriter out = new FileWriter(customerFile);
-		while (line != null) {
-			if (!line.equals("")) {
-				out.append(line + "\n");
-				line = in.readLine();
-			} else {
-				break;
-			}
 			
 			for (int i = 0; i < customers.size(); i++) {
 		CustomerHandler customer = customers.get(i);
@@ -42,11 +34,11 @@ public static void saveData(ArrayList<CustomerHandler> customers) {
 		customerInfo[1] = customer.getEmail();
 		customerInfo[2] = Integer.toString(customer.getPoints());
 		
-		out.append(customerInfo[0] + "," + customerInfo[1] + "," + customerInfo[2]);
+		out.append(customerInfo[0] + "," + customerInfo[1] + "," + customerInfo[2] + "\n");
 			}
 		out.close();
 		in.close();
-		}
+		
 		} catch (FileNotFoundException e) {
 		// catches file not found exception and prints
 

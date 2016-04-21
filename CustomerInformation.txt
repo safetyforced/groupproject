@@ -1,1 +1,3 @@
-this is an empty file
+Alex,name@email.com,5
+Jamilah,name@email.com,0
+Calvin,name@email.com,5

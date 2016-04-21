@@ -7,6 +7,8 @@ public class myApp {
 	static Scanner Scan1 = new Scanner(System.in);
 	static boolean userPick = true;
 	static ArrayList<CustomerHandler> list;
+	static int userPoints = 0;
+	static int userPosition = 0;
 public static void main(String[] args) {
 
     list=fileIOHandler.readData();	
@@ -17,22 +19,33 @@ public static void main(String[] args) {
 
 	System.out.print("Please enter your name:");
 	String userName = Scan1.nextLine();
-	System.out.println("Hello " + userName + "! You have" + " points!");
+	userPosition = searchCustomer(userName);
+	userPoints = list.get(userPosition).getPoints();
+	System.out.println("Hello " + userName + "! You have " + userPoints + " points!");
+
 	
-	String [ ] menu = {"", "add points", "redeem your points", "exit the app"};
 	while (true)
 	{
 	System.out.println();
 	System.out.println("Menu:\n1) Add Points \n2) Redeem Points \n3) Exit App\nWhat would you like to do?");
-	int userInput = getValidNumberInRange(1,menu.length-1);
+	int userInput = getValidNumberInRange(1,3);
 	System.out.println();
 
-	System.out.println("You chose to " + menu[userInput] + ".");
 	
-	System.out.println();
-
-	if (userInput==3) 
+if (userInput == 1){
+	userPoints++;
+	list.get(userPosition).setPoints(userPoints);
+} else if (userInput == 2) {
+	if (userPoints >= 10) {
+	userPoints -= 10;
+	list.get(userPosition).setPoints(userPoints);
+	} else {
+		System.out.println("Nice try, wiseguy.");
+		continue;
+	}
+} else if (userInput==3) 
 	{ System.out.println("Have a great Day!");
+	fileIOHandler.saveData(list);
 		break;
 	}
 
@@ -66,7 +79,7 @@ public static int searchCustomer(String name){
 	int x = 0;
 	for (int i = 0; i < list.size(); i++) {
 		if (list.get(i).getName().equalsIgnoreCase(name)){
-			 x= list.get(i).getPoints();
+			 x = i;
 		}
 	}
 	return x;

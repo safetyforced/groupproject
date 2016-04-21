@@ -6,14 +6,6 @@ public class CustomerHandler {
 	private String email;
 	private int points;
 
-	public void incrementPoints(int points) {
-		points++;
-	}
-
-	public void getFreeDrink(CustomerHandler customer) {
-		points -= 10;
-	}
-
 	public int getPoints() {
 		return points;
 	}

@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class VendorHandler {
+public class Vendor {
 
 	static String companyName;
 	static String companyContact;
@@ -20,7 +20,7 @@ public class VendorHandler {
 	}
 	
 	public static void setCompanyName(String companyName) {
-		VendorHandler.companyName = companyName;
+		Vendor.companyName = companyName;
 	}
 	
 	public static String getCompanyContact() {
@@ -28,7 +28,7 @@ public class VendorHandler {
 	}
 	
 	public static void setCompanyContact(String companyContact) {
-		VendorHandler.companyContact = companyContact;
+		Vendor.companyContact = companyContact;
 	}
 	
 	public static void writeCompany () {
@@ -37,7 +37,7 @@ public class VendorHandler {
 		System.out.print("Enter the company's name: ");
 
 		try {
-			companyName = validator.getValidString("[a-z A-Z]+", 300);
+			setCompanyName(validator.getValidString("[a-z A-Z]+", 300));
 		} catch (Exception e) {
 			// catches all exceptions and prints
 
@@ -47,7 +47,7 @@ public class VendorHandler {
 		System.out.print("Enter the company's e-mail address: ");
 		
 		try {
-			companyContact = validator.getValidString("\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}\\b", 300);
+			setCompanyContact(validator.getValidString("\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}\\b", 300));
 		} catch (Exception e) {
 			// catches all exceptions and prints
 
